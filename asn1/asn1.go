@@ -38,11 +38,15 @@ package asn1
 import (
 	"errors"
 	"fmt"
+	"golang.org/x/text/runes"
+	"golang.org/x/text/transform"
+	"golang.org/x/text/unicode/norm"
 	"math"
 	"math/big"
 	"reflect"
 	"strconv"
 	"time"
+	"unicode"
 	"unicode/utf16"
 	"unicode/utf8"
 )
@@ -433,7 +437,10 @@ func isNumeric(b byte) bool {
 // parsePrintableString parses an ASN.1 PrintableString from the given byte
 // array and returns it.
 func parsePrintableString(bytes []byte, lax bool, fieldName string) (ret string, err error) {
-	for _, b := range bytes {
+	normalizer := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
+	s, _, err := transform.String(normalizer, string(bytes))
+
+	for _, b := range []byte(s) {
 		if !isPrintable(b, allowAsterisk, allowAmpersand) {
 			if !lax {
 				err = SyntaxError{"PrintableString contains invalid character", fieldName}
