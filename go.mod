@@ -1,10 +1,11 @@
-module github.com/google/certificate-transparency-go
+module github.com/glezjose/certificate-transparency-go
 
 go 1.20
 
 require (
 	github.com/fullstorydev/grpcurl v1.8.9
 	github.com/golang/mock v1.6.0
+	github.com/google/certificate-transparency-go v1.1.7
 	github.com/google/go-cmp v0.6.0
 	github.com/google/trillian v1.5.3
 	github.com/gorilla/mux v1.8.1
@@ -22,6 +23,7 @@ require (
 	go.etcd.io/etcd/v3 v3.5.10
 	golang.org/x/crypto v0.15.0
 	golang.org/x/net v0.18.0
+	golang.org/x/text v0.14.0
 	golang.org/x/time v0.4.0
 	google.golang.org/grpc v1.59.0
 	google.golang.org/protobuf v1.31.0
@@ -115,7 +117,6 @@ require (
 	golang.org/x/oauth2 v0.13.0 // indirect
 	golang.org/x/sync v0.4.0 // indirect
 	golang.org/x/sys v0.14.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/tools v0.14.0 // indirect
 	google.golang.org/api v0.149.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
